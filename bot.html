@@ -143,13 +143,13 @@
             const random = Math.random();
             if (random < 0.5) {
                 // 70% chance de gerar um número menor que 2.00
-                return (Math.random() * 1.9 + 0.1).toFixed(2) + 'x';
-            } else if (random < 0.95) {
+                return (Math.random() * 1.9 + 1.00).toFixed(2) + 'x';
+            } else if (random < 1.99) {
                 // 25% chance de gerar um número entre 2.00 e 10.00
-                return (Math.random() * 8 + 2).toFixed(2) + 'x';
+                return (Math.random() * 18  + 2).toFixed(2) + 'x';
             } else {
                 // 5% chance de gerar um número maior ou igual a 10.00
-                return (Math.random() * 100 + 10).toFixed(2) + 'x';
+                return (Math.random() * 0 + 1).toFixed(2) + 'x';
             }
         }
 
