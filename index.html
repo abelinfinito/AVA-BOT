@@ -1,138 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tela de Login</title>
+  <title>Login - Preditor AIN v3.0</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
       background-color: #000;
       color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 65vh;
     }
+
     .login-container {
-      background: #000;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-      width: 300px;
+      width: 90%;
+      max-width: 350px;
       text-align: center;
     }
-    .login-container img {
-      width: 60px;
+
+    .logo {
+      width: 120px;
       margin-bottom: 20px;
     }
-    .login-container h2 {
-      margin-bottom: 10px;
-    }
-    .login-container p {
+
+    h2 {
+      color: #D6002F;
+      font-size: 20px;
       margin-bottom: 20px;
-      color: #ccc;
     }
+
     .input-group {
+      position: relative;
       margin-bottom: 15px;
     }
+
     .input-group input {
-      width: 90%;
-      padding: 10px;
-      border: 1px solid #333;
+      width: 100%;
+      padding: 12px;
+      padding-left: 40px;
+      border: none;
       border-radius: 5px;
-      background-color: #222;
+      background-color: #2F3E56;
+      color: white;
+      font-size: 16px;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
       color: white;
     }
-    .what{
-   color:blue;
-  width: 50px;
- background-color: #0056b3;
- width: 100%;
- height: 100%;
- border-radius:10px;
- height: 50px;
- text-align: center;
- top: 250%;
- 
 
- }
-a{
+    .password-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
 
-  color: white;
-  text-decoration: none;
-  top: 250px;
-}
-    
+    .forgot-password {
+      text-align: right;
+      display: block;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      color: #999;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
     .btn {
-      width: 200PX;
-      padding: 10px;
-      background: #007bff;
+      width: 100%;
+      padding: 12px;
+      background: #D6002F;
       color: white;
       border: none;
       border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
     }
+
     .btn:hover {
-      background: #0056b3;
+      background: #b00023;
     }
-    .error-message {
-      color: red;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-    .login-container .alternative {
+
+    .register {
       margin-top: 20px;
       font-size: 14px;
-      color: #ccc;
-    
+    }
 
+    .register a {
+      color: #D6002F;
+      text-decoration: none;
+      font-weight: bold;
     }
-   
-    .login-container .whatsapp-btn {
-      width: 100%;
-      padding: 10px;
-      background: #25D366;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .login-container .whatsapp-btn img {
-      margin-right: 10px;
-      width: 20px;
+
+    .whatsapp-link {
+      display: block;
+      margin-top: 30px;
+      color: #D6002F;
+      text-decoration: none;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
+
   <div class="login-container">
-  <img style="width: 100px;border-radius:10px;height:2%;" src="bot1.png">
-    <h2>AVA BOT</h2>
-    <p>100% de acertividade</p>
+    <img class="logo" src="bot1.png" alt="Logo">
+    <h2>AVA BOT pro v3.0</h2>
+
     <form id="loginForm">
       <div class="input-group">
+        <i>👤</i>
         <input type="text" id="username" placeholder="Numero" required>
       </div>
-      <div class="input-group">
-        <input type="password" id="password" placeholder="Password" required>
-      </div>
-      <button type="submit" class="btn">LOGIN</button>
-      <div id="errorMessage" class="error-message"></div>
-    </form>
-    <br><br>
-    <a href="https://wa.me/244926240472?text=saudação+Avabot+preciso+me+registar." 
-   target="_blank" 
-   style="text-decoration: none; background-color: #25D366; color: white; padding: 10px 20px; border-radius: 5px; font-size: 16px;">
-   Suporte via WhatsApp
-</a>
 
+      <div class="input-group">
+        <i>🔒</i>
+        <input type="password" id="password" placeholder="Password" required>
+        <span class="password-icon" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <a href="#" class="forgot-password">Esqueceu a senha?</a>
+
+      <button type="submit" class="btn">ENTRAR</button>
+
+      <div class="register">
+        Não tenho uma conta! <br><br><a href="https://wa.me/926240472">Registar-se</a>
+      </div>
+      
+      <a href="https://chat.whatsapp.com/CNsM1ysyDXA0o7SUCSbG8v" class="whatsapp-link">Junte-se ao nosso grupo do WhatsApp <strong>Clicando aqui</strong></a>
+    </form>
+  </div>
 
   <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    }
+
     document.getElementById("loginForm").addEventListener("submit", async function (e) {
       e.preventDefault();
 
@@ -143,22 +165,19 @@ a{
         const response = await fetch("users.json");
         const users = await response.json();
 
-        const user = users.find(
-          (u) => u.username === username && u.password === password
-        );
+        const user = users.find((u) => u.username === username && u.password === password);
 
         if (user) {
           alert("Login bem-sucedido! Bem-vindo, " + username + "!");
-          window.location.href = "bot.html"; // Redireciona para a página principal (bot.html)
+          window.location.href = "bot.html"; // Redireciona para o painel
         } else {
-          document.getElementById("errorMessage").textContent =
-            "Usuário ou senha incorretos!";
+          alert("Usuário ou senha incorretos!");
         }
       } catch (error) {
         console.error("Erro ao carregar os usuários:", error);
       }
     });
   </script>
+
 </body>
 </html>
-
