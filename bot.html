@@ -12,6 +12,13 @@
             padding: 0;
             background-color: #f4f4f4;
         }
+       a{
+       font-size: 14px;
+       text-align: center;
+       text-decoration:navy;
+       color:rgb(12, 87, 12);
+       
+        }
 
         .header {
             background-color: #d32f2f;
@@ -22,9 +29,9 @@
         }
 
         .circle {
-            width: 220px;
-            height: 220px;
-            border: 6px solid green;
+            width: 200px;
+            height: 200px;
+            border: 5px solid green;
             border-radius: 50%;
             margin: 20px auto;
             display: flex;
@@ -34,26 +41,26 @@
         }
 
         .circle h1 {
-            font-size: 35px;
+            font-size: 30px;
             color: red;
             margin: 0;
         }
 
         .button {
-            background-color: #007bff;
+            background-color: green;
             color: white;
             border: none;
-            padding: 12px 24px;
-            font-size: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
             cursor: pointer;
-            border-radius: 6px;
+            border-radius: 5px;
             margin-top: 20px;
             position: relative;
             overflow: hidden;
         }
 
         .button:hover {
-            background-color: #0056b3;
+            background-color: darkgreen;
         }
 
         .loader {
@@ -125,13 +132,10 @@
 </head>
 <body>
     <div class="header">AVA BOT <br>100% de acertividade</div>
-    
+    <br> <a href="sintronizar.html">SINTRONIZAR BOT</a> 
     <div class="circle">
         <h1 id="multiplier">00.00x</h1>
-        <br><br>
-      
     </div>
-    
     <button class="button" id="actionButton" onclick="nextPrediction()">
         <span id="buttonText">Hackear próxima vela</span>
         <div class="loader" id="buttonLoader"></div>
@@ -145,12 +149,15 @@
     <script>
         function generateRandomMultiplier() {
             const random = Math.random();
-            if (random < 0.70) {
-                return (Math.random() * 0.99 + 1.00).toFixed(2) + 'x'; // 70% chance de sair < 2.00x
-            } else if (random < 0.95) {
-                return (Math.random() * 5 + 2).toFixed(2) + 'x'; // 25% chance de sair entre 2.00x e 7.00x
+            if (random < 0.5) {
+                // 70% chance de gerar um número menor que 2.00
+                return (Math.random() * 1.9 + 1.00).toFixed(2) + 'x';
+            } else if (random < 1.99) {
+                // 25% chance de gerar um número entre 2.00 e 10.00
+                return (Math.random() * 18  + 2).toFixed(2) + 'x';
             } else {
-                return (Math.random() * 10 + 10).toFixed(2) + 'x'; // 5% chance de sair acima de 10.00x
+                // 5% chance de gerar um número maior ou igual a 10.00
+                return (Math.random() * 0 + 1).toFixed(2) + 'x';
             }
         }
 
@@ -187,7 +194,7 @@
             const value = parseFloat(number.replace("x", ""));
             if (value < 2.00) {
                 newEntry.classList.add("blue");
-            } else if (value >= 2.00 && value < 7.00) {
+            } else if (value >= 2.00 && value < 10.00) {
                 newEntry.classList.add("purple");
             } else if (value >= 10.00) {
                 newEntry.classList.add("pink");
