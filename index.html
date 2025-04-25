@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Preditor AIN v3.0</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 75vh;
+    }
+
+    .login-container {
+      width: 90%;
+      max-width: 350px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #D6002F;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 15px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      padding-left: 40px;
+      border: none;
+      border-radius: 5px;
+      background-color: #2F3E56;
+      color: white;
+      font-size: 16px;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+    }
+
+    .password-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    .forgot-password {
+      text-align: right;
+      display: block;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      color: #999;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #D6002F;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #b00023;
+    }
+
+    .register {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .register a {
+      color: #D6002F;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .whatsapp-link {
+      display: block;
+      margin-top: 30px;
+      color: #D6002F;
+      text-decoration: none;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <img class="logo" src="bot1.png" alt="Logo">
+    <h2>AVA BOT pro v3.0</h2>
+
+    <form id="loginForm">
+      <div class="input-group">
+        <i>👤</i>
+        <input type="text" id="username" placeholder="Numero" required>
+      </div>
+
+      <div class="input-group">
+        <i>🔒</i>
+        <input type="password" id="password" placeholder="Password" required>
+        <span class="password-icon" onclick="togglePassword()">👁️</span>
+      </div>
+
+      <a href="https://wa.me/926240472" class="forgot-password">Esqueceu a senha?</a>
+
+      <button type="submit" class="btn">ENTRAR</button>
+
+      <div class="register">
+        Não tenho uma conta! <br><br><a href="https://wa.me/926240472">Registar-se</a>
+      </div>
+      
+      <a href="https://chat.whatsapp.com/CNsM1ysyDXA0o7SUCSbG8v" class="whatsapp-link">Junte-se ao nosso grupo do WhatsApp <strong>Clicando aqui</strong></a>
+    </form>
+  </div>
+
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById("password");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+      } else {
+        passwordInput.type = "password";
+      }
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const response = await fetch("users.json");
+        const users = await response.json();
+
+        const user = users.find((u) => u.username === username && u.password === password);
+
+        if (user) {
+          alert("Login bem-sucedido! Bem-vindo, " + username + "!");
+          window.location.href = "bot.html"; // Redireciona para o painel
+        } else {
+          alert("Usuário ou senha incorretos!");
+        }
+      } catch (error) {
+        console.error("Erro ao carregar os usuários:", error);
+      }
+    });
+  </script>
+
+</body>
+</html>
