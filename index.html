@@ -1,3 +1,4 @@
+Dito por si:
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -138,6 +139,8 @@
 
       <button type="submit" class="btn">ENTRAR</button>
 
+      <button type="button" class="btn" onclick="usarContaTeste()">Usar conta de teste</button>
+
       <div class="register">
         Não tenho uma conta! <br><br><a href="https://wa.me/926240472">Registar-se</a>
       </div>
@@ -176,7 +179,15 @@
         console.error("Erro ao carregar os usuários:", error);
       }
     });
+
+    function usarContaTeste() {
+      document.getElementById("username").value = "12345678";
+      document.getElementById("password").value = "AMADOR";
+
+      // Disparar o evento submit
+      document.getElementById("loginForm").dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
+    }
   </script>
 
 </body>
-</html>
+</html> 
