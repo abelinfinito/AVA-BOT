@@ -9,22 +9,27 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif;
     }
 
     body {
-      background-color: #000;
+      background: linear-gradient(135deg, #0a0a0a, #1c2a3d);
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 75vh;
+      height: 100vh;
     }
 
     .login-container {
       width: 90%;
-      max-width: 350px;
+      max-width: 380px;
       text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
     }
 
     .logo {
@@ -34,71 +39,93 @@
 
     h2 {
       color: #D6002F;
-      font-size: 20px;
-      margin-bottom: 20px;
+      font-size: 22px;
+      margin-bottom: 25px;
     }
 
     .input-group {
       position: relative;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .input-group input {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       padding-left: 40px;
       border: none;
-      border-radius: 5px;
+      border-radius: 12px;
       background-color: #2F3E56;
       color: white;
       font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      background: #3b4e6d;
+      box-shadow: 0 0 10px rgba(214, 0, 47, 0.6);
     }
 
     .input-group i {
       position: absolute;
-      left: 10px;
+      left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      color: white;
+      color: #bbb;
+      font-size: 16px;
     }
 
     .password-icon {
       position: absolute;
-      right: 10px;
+      right: 12px;
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
     }
 
-    .forgot-password {
-      text-align: right;
-      display: block;
-      margin-top: -10px;
-      margin-bottom: 20px;
-      color: #999;
-      font-size: 14px;
-      text-decoration: none;
-    }
-
     .btn {
       width: 100%;
-      padding: 12px;
-      background: #D6002F;
+      padding: 14px;
+      background: linear-gradient(135deg, #D6002F, #b00023);
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 12px;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
       margin-top: 10px;
+      transition: 0.3s;
     }
 
     .btn:hover {
-      background: #b00023;
+      background: linear-gradient(135deg, #ff0044, #d6002f);
+      box-shadow: 0 0 12px rgba(214, 0, 47, 0.7);
+    }
+
+    .custom-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #2F3E56, #445a7a);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: 0.3s;
+    }
+
+    .custom-btn:hover {
+      background: linear-gradient(135deg, #445a7a, #5c7aa5);
+      box-shadow: 0 0 12px rgba(68, 90, 122, 0.7);
     }
 
     .register {
       margin-top: 20px;
       font-size: 14px;
+      color: #ccc;
     }
 
     .register a {
@@ -109,10 +136,15 @@
 
     .whatsapp-link {
       display: block;
-      margin-top: 30px;
-      color: #D6002F;
+      margin-top: 25px;
+      color: #25D366;
       text-decoration: none;
       font-size: 14px;
+      font-weight: bold;
+    }
+
+    .whatsapp-link:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -120,12 +152,12 @@
 
   <div class="login-container">
     <img class="logo" src="bot1.png" alt="Logo">
-    <h2>AVA BOT pro v3.0</h2>
+    <h2>AVA BOT supremo  v5.7</h2>
 
     <form id="loginForm">
       <div class="input-group">
         <i>👤</i>
-        <input type="text" id="username" placeholder="Numero" required>
+        <input type="text" id="username" placeholder="Número" required>
       </div>
 
       <div class="input-group">
@@ -134,17 +166,14 @@
         <span class="password-icon" onclick="togglePassword()">👁️</span>
       </div>
 
-      <a href="https://wa.me/926240472" class="forgot-password">Esqueceu a senha?</a>
-
       <button type="submit" class="btn">ENTRAR</button>
+      <a href="bot.html" class="custom-btn"> Testar</a>
 
       <div class="register">
-        Não tenho uma conta! <br><br><a href="https://wa.me/926240472">Registar-se</a>
+         Precisa de ajuda? Ligue: <strong>926240472</strong>
       </div>
       
-      <a href="https://chat.whatsapp.com/CNsM1ysyDXA0o7SUCSbG8v" class="whatsapp-link">
-        Junte-se ao nosso grupo do WhatsApp <strong>Clicando aqui</strong>
-      </a>
+     
     </form>
   </div>
 

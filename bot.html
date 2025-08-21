@@ -1,73 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aviator Previsões</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-        }
-       a{
-       font-size: 14px;
-       text-align: center;
-       text-decoration:navy;
-       color:rgb(12, 87, 12);
-       
+            background: linear-gradient(135deg, #0a0a0a, #1c1c2b);
+            color: white;
         }
 
         .header {
-            background-color: #d32f2f;
+            background: linear-gradient(90deg, #d32f2f, #a0002a);
             color: white;
-            padding: 15px;
-            font-size: 20px;
+            padding: 20px;
+            font-size: 22px;
             font-weight: bold;
+            text-shadow: 0 0 10px rgba(255,255,255,0.3);
         }
 
         .circle {
-            width: 200px;
-            height: 200px;
-            border: 5px solid green;
+            width: 220px;
+            height: 220px;
+            border: 6px solid #00ff88;
             border-radius: 50%;
-            margin: 20px auto;
+            margin: 30px auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: white;
+            background: rgba(0,0,0,0.6);
+            box-shadow: 0 0 20px #00ff88, inset 0 0 10px rgba(0,255,136,0.5);
+            animation: pulse 2s infinite;
         }
 
         .circle h1 {
-            font-size: 30px;
-            color: red;
+            font-size: 34px;
+            color: #ff4444;
             margin: 0;
+            text-shadow: 0 0 10px rgba(255,0,0,0.7);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 20px #00ff88, inset 0 0 10px rgba(0,255,136,0.5); }
+            50% { box-shadow: 0 0 40px #00ff88, inset 0 0 20px rgba(0,255,136,0.8); }
         }
 
         .button {
-            background-color: green;
-            color: white;
+            background: linear-gradient(135deg, #00ff88, #008844);
+            color: black;
             border: none;
-            padding: 10px 20px;
+            padding: 14px 28px;
             font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 12px;
             margin-top: 20px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0 15px rgba(0,255,136,0.7);
+            animation: glitch 2s infinite;
         }
 
         .button:hover {
-            background-color: darkgreen;
+            background: linear-gradient(135deg, #00cc66, #006633);
+            box-shadow: 0 0 25px rgba(0,255,136,0.9);
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
         }
 
         .loader {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             border: 3px solid #fff;
-            border-top: 3px solid #d32f2f;
+            border-top: 3px solid #ff4444;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             display: none;
@@ -80,21 +96,20 @@
         }
 
         .history {
-            margin: 20px auto;
-            max-width: 300px;
+            margin: 30px auto;
+            max-width: 320px;
             text-align: left;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.6);
         }
 
         .history h2 {
             margin: 0 0 10px;
             font-size: 18px;
             text-align: center;
-            color: #333;
+            color: #00ff88;
         }
 
         .history ul {
@@ -104,40 +119,48 @@
         }
 
         .history li {
-            padding: 5px;
-            border-bottom: 1px solid #ddd;
+            padding: 6px;
             font-size: 16px;
-            color: #fff;
             font-weight: bold;
-            border-radius: 4px;
-            margin-bottom: 5px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            text-align: center;
         }
 
-        .history li:last-child {
-            border-bottom: none;
+        .blue { background-color: #2196F3; }
+        .purple { background-color: #9C27B0; }
+        .pink { background-color: #E91E63; }
+
+        .sync-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 14px;
+            background: linear-gradient(135deg, #ff4444, #a0002a);
+            color: white;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            width: 200px;
+            box-shadow: 0 0 15px rgba(255,0,0,0.7);
+            transition: 0.3s;
         }
 
-        .blue {
-            background-color: #2196F3; /* Azul */
-        }
-
-        .purple {
-            background-color: #9C27B0; /* Roxo */
-        }
-
-        .pink {
-            background-color: #E91E63; /* Rosa */
+        .sync-btn:hover {
+            background: linear-gradient(135deg, #ff6666, #d32f2f);
+            box-shadow: 0 0 25px rgba(255,0,0,0.9);
         }
     </style>
 </head>
 <body>
     <div class="header">AVA BOT <br>100% de acertividade</div>
-    <br> <a href="sintronizar.html">SINTRONIZAR BOT</a> 
+
     <div class="circle">
         <h1 id="multiplier">00.00x</h1>
     </div>
+
     <button class="button" id="actionButton" onclick="nextPrediction()">
-        <span id="buttonText">Hackear próxima vela</span>
+        <span id="buttonText">⚡ Hackear próxima vela</span>
         <div class="loader" id="buttonLoader"></div>
     </button>
 
@@ -146,40 +169,37 @@
         <ul id="historyList"></ul>
     </div>
 
+    <a href="sintronizar.html" class="sync-btn">🔗 Sincronizar BOT</a>
+
     <script>
         function generateRandomMultiplier() {
             const random = Math.random();
-            if (random < 0.5) {
-                // 70% chance de gerar um número menor que 2.00
+            if (random < 0.7) {
                 return (Math.random() * 1.9 + 1.00).toFixed(2) + 'x';
-            } else if (random < 1.99) {
-                // 25% chance de gerar um número entre 2.00 e 10.00
-                return (Math.random() * 18  + 2).toFixed(2) + 'x';
+            } else if (random < 0.95) {
+                return (Math.random() * 8 + 2).toFixed(2) + 'x';
             } else {
-                // 5% chance de gerar um número maior ou igual a 10.00
-                return (Math.random() * 0 + 1).toFixed(2) + 'x';
+                return (Math.random() * 20 + 10).toFixed(2) + 'x';
             }
         }
 
         function nextPrediction() {
-            const button = document.getElementById("actionButton");
             const buttonText = document.getElementById("buttonText");
             const buttonLoader = document.getElementById("buttonLoader");
 
-            // Mostrar a animação e ocultar o texto do botão
             buttonText.style.display = "none";
             buttonLoader.style.display = "block";
 
-            // Simular um processamento de 3 segundos
             setTimeout(() => {
-                // Gera um número aleatório
                 const currentNumber = generateRandomMultiplier();
-                document.getElementById("multiplier").textContent = currentNumber;
+                const multiplierElement = document.getElementById("multiplier");
 
-                // Adiciona o número ao histórico
+                multiplierElement.textContent = currentNumber;
+                multiplierElement.style.animation = "flash 1s ease";
+                setTimeout(() => multiplierElement.style.animation = "", 1000);
+
                 addToHistory(currentNumber);
 
-                // Restaurar o texto do botão e esconder a animação
                 buttonText.style.display = "block";
                 buttonLoader.style.display = "none";
             }, 3000);
@@ -190,20 +210,19 @@
             const newEntry = document.createElement("li");
             newEntry.textContent = number;
 
-            // Adicionar classe de cor com base no valor
             const value = parseFloat(number.replace("x", ""));
             if (value < 2.00) {
                 newEntry.classList.add("blue");
             } else if (value >= 2.00 && value < 10.00) {
                 newEntry.classList.add("purple");
-            } else if (value >= 10.00) {
+            } else {
                 newEntry.classList.add("pink");
             }
 
-            // Adiciona o novo número no topo do histórico
             historyList.insertBefore(newEntry, historyList.firstChild);
         }
     </script>
 </body>
 </html>
+
 
